@@ -12,8 +12,8 @@
   <body>
     <div class="container">
       <ul class="nav nav-tabs" role="navigation">
-        <li><%= link_to "Home", welcome_index_path %></li>
-        <li><%= link_to "About", welcome_about_path %></li>
+        <li><%= link_to "Blocipedia", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
 
         <div id="user_control">
           <p class="navbar-text navbar-right">
@@ -35,8 +35,8 @@
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <%= flash[:notice] %>
         </div>
-      <% else %>
-        <div class="alert alert-warning">
+      <% elsif flash[:alert] %>
+        <div class="alert alert-danger">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <%= flash[:alert] %>
         </div>

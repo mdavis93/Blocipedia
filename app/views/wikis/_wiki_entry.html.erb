@@ -1,0 +1,10 @@
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to wiki_entry.title, wiki_path(wiki_entry) %>
+    </h4>
+    <small>
+      Added <%= time_ago_in_words(wiki_entry.created_at) %>.
+    </small>
+  </div>
+</div>

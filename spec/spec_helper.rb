@@ -13,7 +13,6 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require 'rspec/rails'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -99,6 +98,5 @@ RSpec.configure do |config|
 =begin
   # Custom config entries beyond this point
 =end
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::ControllerHelpers, type: :view
+
 end

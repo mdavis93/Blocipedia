@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-md-8">
+    <% if @wikis.count > 0 %>
+      <%= render partial: 'wiki_entry', collection: @wikis %>
+    <% else %>
+      <h4>No Wiki's Have Been Created Yet!</h4>
+    <% end %>
+  </div>
+</div>

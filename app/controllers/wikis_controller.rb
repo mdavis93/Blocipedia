@@ -48,9 +48,8 @@ class WikisController < ApplicationController
 
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" Wiki destroyed successfully!"
-      redirect_to action: :index
+      redirect_to wikis_path
     else
-      puts "Error Updating Wiki\n\n#{@wiki.errors.full_messages}\n\n"
       flash[:alert] = "There was an error processing your Wiki. Please try again."
       render :show
     end

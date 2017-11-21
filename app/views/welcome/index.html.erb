@@ -1,2 +1,38 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="jumbotron">
+  <h1>Blocipedia</h1>
+  <p>Blocipedia is a platform for sharing resources related to the Bloc Apprenticship Program</p>
+  <% if current_user.nil? %>
+    <p>
+      <%= link_to "Sign In", new_user_session_path %> or
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to "View All Wikis", wikis_path, class: 'btn btn-info' %>
+      <%= link_to "Create a New Wiki", new_wiki_path, class: 'btn btn-success' %>
+    </p>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-4 card">
+    <%= image_tag("Rails.png", alt: "Front End Developer") %>
+    <div class="contianer text-center">
+      <h4>Web Developer Track</h4>
+    </div>
+  </div>
+
+  <div class="col-md-4 card m-lr-5">
+    <%= image_tag("graphic-designs.png", height: "100%", alt: "Designer") %>
+    <div class="contianer text-center">
+      <h4>Design Track</h4>
+    </div>
+  </div>
+
+  <div class="col-md-4 card">
+    <%= image_tag("Software-Development.png", alt: "Software Developer") %>
+    <div class="contianer text-center">
+      <h4>Software Developer Track</h4>
+    </div>
+  </div>
+</div>

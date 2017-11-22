@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+  skip_before_action :authenticate_user!
 
   def index
     @wikis = Wiki.all
@@ -19,8 +20,7 @@ class WikisController < ApplicationController
       flash[:notice] = "Wiki successfully created!"
       redirect_to @wiki
     else
-      puts "Error Saving Wiki\n\n#{@wiki.errors.full_messages}\n\n"
-      flash[:alert] = "There was an error processing your Wiki. Please try again."
+      flash.now[:alert] = "There was an error processing your Wiki. Please try again."
       render :new
     end
   end
@@ -37,8 +37,7 @@ class WikisController < ApplicationController
       flash[:notice] = "Wiki updated successfully!"
       redirect_to @wiki
     else
-      puts "Error Updating Wiki\n\n#{@wiki.errors.full_messages}\n\n"
-      flash[:alert] = "There was an error processing your Wiki. Please try again."
+      flash.now[:alert] = "There was an error processing your Wiki. Please try again."
       render :edit
     end
   end
@@ -50,7 +49,7 @@ class WikisController < ApplicationController
       flash[:notice] = "\"#{@wiki.title}\" Wiki destroyed successfully!"
       redirect_to wikis_path
     else
-      flash[:alert] = "There was an error processing your Wiki. Please try again."
+      flash.now[:alert] = "There was an error processing your Wiki. Please try again."
       render :show
     end
   end

@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+User.create!(email: Faker::Internet.email, password: Faker::Internet.password)
+users = User.all
+
+Wiki.create!(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(4, true, 4), private: false, user: users.sample)

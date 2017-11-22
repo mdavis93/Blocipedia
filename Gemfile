@@ -45,6 +45,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'shoulda'
   gem 'factory_girl_rails'
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
 gem 'bootstrap-sass'

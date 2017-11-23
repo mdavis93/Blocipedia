@@ -46,6 +46,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'byebug', platform: :mri
 end
 
 gem 'bootstrap-sass'
@@ -53,3 +54,4 @@ gem 'devise'
 gem 'figaro'
 gem 'pundit'
 gem 'stripe'
+gem 'redcarpet'

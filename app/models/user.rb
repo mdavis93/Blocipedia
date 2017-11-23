@@ -12,4 +12,8 @@ class User < ApplicationRecord
   after_initialize { self.role ||= :standard }
 
   enum role: [:standard, :premium, :admin]
+
+  def canSee(wiki)
+    !wiki.private || wiki.user_id == self.id || self.admin? || self.premium?
+  end
 end

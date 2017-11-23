@@ -20,14 +20,14 @@ RSpec.describe User, type: :model do
     end
 
     it "should respond to admin, standard, and premium" do
-      
+
       expect(user).to respond_to(:standard?)
       expect(user).to respond_to(:premium?)
       expect(user).to respond_to(:admin?)
     end
   end
 
-  define "user roles" do
+  describe "user roles" do
     it "is standard by default" do
       expect(user.role).to eq("standard")
     end
@@ -48,37 +48,37 @@ RSpec.describe User, type: :model do
 
     context "premium user" do
       before do
-        @user.premium!
+        user.premium!
       end
 
       it "returns true for #standard?" do
-        expect(@user.standard?).to be_falsey
+        expect(user.standard?).to be_falsey
       end
 
       it "returns false for #premium?" do
-        expect(@user.premium?).to be_truthy
+        expect(user.premium?).to be_truthy
       end
 
       it "returns false for #admin?" do
-        expect(@user.admin?).to be_falsey
+        expect(user.admin?).to be_falsey
       end
     end
 
     context "admin user" do
       before do
-        @user.admin!
+        user.admin!
       end
 
       it "returns false for #standard?" do
-        expect(@user.standard?).to be_falsey
+        expect(user.standard?).to be_falsey
       end
 
       it "returns false for #premium?" do
-        expect(@user.premium?).to be_falsey
+        expect(user.premium?).to be_falsey
       end
 
       it "returns true for #admin?" do
-        expect(@user.admin?).to be_truthy
+        expect(user.admin?).to be_truthy
       end
     end
   end

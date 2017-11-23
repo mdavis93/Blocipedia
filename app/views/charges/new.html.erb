@@ -1,0 +1,16 @@
+<% if current_user.standard? %>
+  <h3>Upgrade to PREMIUM Member for access to <strong>Private Wiki's</strong>! Only $15 a month!</h3>
+
+  <%= form_tag charges_path do %>
+    <h4>Click the button!</h4>
+
+    <script class="stripe-button"
+        src="https://checkout.stripe.com/checkout.js"
+        data-key="<%= @stripe_btn_data[:key] %>"
+        data-amount="<%= @stripe_btn_data[:amount] %>"
+        data-description="<%= @stripe_btn_data[:description] %>" ></script>
+  <% end %>
+<% elsif current_user.premium? %>
+  <h3>We hate to see you go, but if you must downgrade to <strong>Standard Member</strong>, use the following link.</h3>
+  <%= link_to "Downgrade Account", @charge, method: :delete, class: 'btn btn-danger', data: {confirm: "Downgrading your account will cause all your private Wikis to be marked as PUBLIC.  Are you sure?"} %>
+<% end %>

@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-User.create!(email: Faker::Internet.email, password: Faker::Internet.password)
+Faker::UniqueGenerator.clear
+
+User.create!(email: Faker::Internet.unique.email, password: Faker::Internet.password)
 users = User.all
 
 Wiki.create!(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(4, true, 4), private: false, user: users.sample)

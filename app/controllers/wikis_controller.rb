@@ -16,22 +16,16 @@ class WikisController < ApplicationController
   def create
     @wiki = current_user.wikis.new(wiki_params)
 
-    if @wiki.private?
-      if @wiki.save
+    if @wiki.save
+      if @wiki.private?
         flash[:notice] = "Private Wiki successfully created!"
-        redirect_to @wiki
       else
-        flash.now[:alert] = "There was an error processing your Wiki. Please try again."
-        render :new
-      end
-    else
-      if @wiki.save
         flash[:notice] = "Wiki successfully created!"
-        redirect_to @wiki
-      else
-        flash.now[:alert] = "There was an error processing your Wiki. Please try again."
-        render :new
       end
+      redirect_to @wiki
+    else
+      flash.now[:alert] = "There was an error processing your Wiki. Please try again."
+      render :new
     end
   end
 

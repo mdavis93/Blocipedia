@@ -9,6 +9,14 @@ class WikiPolicy < ApplicationPolicy
     user && (@user.admin? || @wiki.user_id == @user.id)
   end
 
+  def edit?
+    user && (@user.admin? || @wiki.collaborators.exists?(user_id: user.id))
+  end
+
+  def show?
+    !@wiki.private || (@user && @wiki.private && (@wiki.user_id == @user.id || @user.admin? || @wiki.collaborators.exists?(user_id: @user.id)) )
+  end
+
   class Scope < Scope
     attr_reader :user, :scope
 
@@ -19,9 +27,9 @@ class WikiPolicy < ApplicationPolicy
 
     def resolve
       wikis = []
-      if user.role == 'admin'
+      if user && user.role == 'admin'
         wikis = scope.all
-      elsif user.role == 'premium'
+      elsif user && user.role == 'premium'
         all_wikis = scope.all
         all_wikis.each do |wiki|
           if !wiki.private || wiki.owner == user || wiki.collaborators.exists?(user_id: user.id)

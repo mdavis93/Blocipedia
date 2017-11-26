@@ -6,7 +6,16 @@ class WikisController < ApplicationController
   end
 
   def show
-    @wiki = Wiki.find(params[:id])
+    if policy(Wiki.find(params[:id])).show?
+      @wiki = Wiki.find(params[:id])
+    else
+      flash[:alert] = "You are not authorized to do that!"
+      if !current_user
+        redirect_to new_user_session_path
+      else
+        redirect_to wikis_path
+      end
+    end
   end
 
   def new
@@ -30,7 +39,16 @@ class WikisController < ApplicationController
   end
 
   def edit
-    @wiki = Wiki.find(params[:id])
+    if policy(Wiki.find(params[:id])).edit?
+      @wiki = Wiki.find(params[:id])
+    else
+      flash[:alert] = "You are not authorized to do that!"
+      if !current_user
+        redirect_to new_user_session_path
+      else
+        redirect_to wikis_path
+      end
+    end
   end
 
   def update

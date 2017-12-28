@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blocipedia</title>
+    <title>Mikeipedia</title>
     <%= csrf_meta_tags %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@
   <body>
     <div class="container">
       <ul class="nav nav-tabs" role="navigation">
-        <li><%= link_to "Blocipedia", root_path %></li>
+        <li><%= link_to "Mikeipedia", root_path %></li>
         <li><%= link_to "About", about_path %></li>
         <% if current_user && current_user.premium? %>
           <li><%= link_to "Downgrade", new_charge_path %></li>

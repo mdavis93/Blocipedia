@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  let(:user) { create(:user, email: 'test@blocipedia.com', password: 'helloworld') }
+  let(:user) { create(:user, email: 'test@Mikeipedia.com', password: 'helloworld') }
 
   it { is_expected.to have_many(:wikis) }
 
   describe "user entry" do
     it "should contain proper email address" do
-      expect(user.email).to eq('test@blocipedia.com')
+      expect(user.email).to eq('test@Mikeipedia.com')
     end
 
     it "should contain proper password" do

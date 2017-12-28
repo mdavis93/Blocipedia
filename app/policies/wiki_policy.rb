@@ -32,7 +32,7 @@ class WikiPolicy < ApplicationPolicy
       elsif user && user.role == 'premium'
         all_wikis = scope.all
         all_wikis.each do |wiki|
-          if !wiki.private || wiki.owner == user || wiki.collaborators.exists?(user_id: user.id)
+          if !wiki.private || wiki.user_id == user.id || wiki.collaborators.exists?(user_id: user.id)
             wikis << wiki
             puts "Collaborator or Admin"
           end

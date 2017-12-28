@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Wiki, type: :model do
-  let(:user) { create(:user, email: "test@blocipedia.com", password: "helloworld") }
+  let(:user) { create(:user, email: "test@Mikeipedia.com", password: "helloworld") }
   let(:wiki) { create(:wiki, title: "Demo Wiki", body: "This is a demo wiki entry", private: false, user: user) }
 
   it { is_expected.to belong_to(:user) }
